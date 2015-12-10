@@ -31,3 +31,23 @@ The situation that I specifically believe that it applies to, is where you have 
 
 If your server and its features are consumed by an android or ios app, which cannot be released or hotfixed instantly, especially if your product organization or technical strategy disallows you from forcing your users to upgrade (i.e. the normal operation of their business absolutely depends on your app, and they are understandably wary of upgrading)
 
+## References
+
+- http://blog.acolyer.org/2015/10/16/holistic-configuration-management-at-facebook/
+- http://confreaks.tv/videos/rubyconf2015-a-tale-of-two-feature-flags
+- http://martinfowler.com/bliki/FeatureToggle.html
+- https://www.ruby-toolbox.com/search?utf8=%E2%9C%93&q=feature+toggle
+
+## Other gems
+
+- https://github.com/mgsnova/feature
+- https://github.com/balvig/chili
+- https://github.com/ThoughtWorksStudios/feature_toggle
+- https://github.com/caelum/envie
+- https://github.com/att14/toggles
+- https://github.com/jaymcaliley/togg
+- https://github.com/rmg/feature_definitions
+- https://github.com/rackerlabs/bit_toggle
+- https://github.com/thefury/simple_toggle
+- https://github.com/eturino/feature_toggle_service
+- https://github.com/codebreakdown/togls
