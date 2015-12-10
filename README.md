@@ -1,36 +1,33 @@
 # FeatureFeature
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/feature_feature`. To experiment with that code, run `bin/console` for an interactive prompt.
+This may someday grow into something similar to what is described at http://compwron.github.io/2015/12/10/features-of-features-with-rails.html
 
-TODO: Delete this and the text above, and describe your gem
+## Requirements
 
-## Installation
+- Enable/disable a feature without deploying
+- Granular enable/disable per Tlo (top-level-object, i.e. Merchant, User, Venue…)
+- Polymorphic (more than one type of Tlo can have features, i.e. GoatMerchant, CatMerchant)
+- Works with ruby on rails (although the principles are extractable)
+- Must be pre-enable-able, for usage by non-update-able clients like an android/ios app
+- A new feature can be added via the UI (although until there is code to depend on it, it will - do nothing)
+- A feature can be edited via the UI (i.e. the minimum_client_version can be increased from - 1.1.1 to 1.1.2 if for example the 1.1.1 client has a bug that makes the feature work unreliably)
 
-Add this line to your application's Gemfile:
+## Assumptions
 
-```ruby
-gem 'feature_feature'
-```
+A Tlo can have multiple devices which are under its purview, but they must all be on the same version of the app, i.e. upgrading one android tablet (Bob) to version 1.1.2 of the app will force all other devices (Alice, Charles) which are owned by Bob’s Tlo to refuse to work until they too are using exactly version 1.1.2 of the app.
 
-And then execute:
+## Regions of code
 
-    $ bundle
+- A database migration to hold our tables
+- The TLO
+- Fancy fire-on-enable hooks
+- An admin-only UI, where you can turn on a feature_type for any percentage, number, or list of TLOs
 
-Or install it yourself as:
+## Rationale
 
-    $ gem install feature_feature
+This rationale does not apply to all situations.
 
-## Usage
+The situation that I specifically believe that it applies to, is where you have a large number of distinct customers (merchants, venues, clients, etc) which are each a tiny yet larger-than-individual-transaction percentage of your traffic flow. It is persistent object- usually the “main” object in your data model.
 
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/feature_feature.
+If your server and its features are consumed by an android or ios app, which cannot be released or hotfixed instantly, especially if your product organization or technical strategy disallows you from forcing your users to upgrade (i.e. the normal operation of their business absolutely depends on your app, and they are understandably wary of upgrading)
 
