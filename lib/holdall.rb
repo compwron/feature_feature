@@ -376,3 +376,12 @@ class FeaturesController < BaseController
       feature_type: feature_type)
   end
 end
+
+
+  # def update_status
+  #   if enabled? && !has_sufficient_version?
+  #     pre_enable
+  #   elsif pre_enabled? && has_sufficient_version?
+  #     enable
+  #   end
+  # end
